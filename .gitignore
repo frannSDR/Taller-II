@@ -1,0 +1,8 @@
+# Carpetas de configuración de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Carpetas de compilación (ignora bin y obj en cualquier subcarpeta)
+[Bb]in/
+[Oo]bj/
