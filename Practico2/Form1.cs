@@ -18,6 +18,7 @@ namespace Practico2
             TDni.KeyPress += new KeyPressEventHandler(TDni_KeyPress);
             TApellido.KeyPress += new KeyPressEventHandler(TApellido_KeyPress);
             TNombre.KeyPress += new KeyPressEventHandler(TNombre_KeyPress);
+            TTelefono.KeyPress += new KeyPressEventHandler(TTelefono_KeyPress);
         }
         
         // Logica de Boton Guardar
@@ -106,6 +107,25 @@ namespace Practico2
             }
         }
 
+        // Validacion keypress para el telefono, solo numeros
+        private void TTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // cancelamos la pulsacion de la tecla.
+
+                // bordes rojos 
+                TTelefono.BackColor = Color.LightPink;
+                LTelefonoError.Visible = true;
+            }
+            else
+            {
+                // reset del campo
+                TTelefono.BackColor = SystemColors.Window;
+                LTelefonoError.Visible = false;
+            }
+        }
+
         // Validacion de entrada de datos (letras y teclas de control) para el campo Nombre.
         private void TNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -166,7 +186,6 @@ namespace Practico2
         private void TDni_TextChanged(object sender, EventArgs e) { }
         private void label1_Click_1(object sender, EventArgs e) { }
         private void label1_Click_2(object sender, EventArgs e) { }
-
         private void PBUsuario_Click(object sender, EventArgs e) { }
     }
 }
